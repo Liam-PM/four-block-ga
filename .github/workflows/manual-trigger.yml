@@ -33,6 +33,7 @@ jobs:
         with:
           tag: 'aiowl'
           extract: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Ls
         run: ls -all
