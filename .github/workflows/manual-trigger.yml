@@ -28,6 +28,9 @@ jobs:
           tag: 'aiowl'
           extract: true
 
+      - name: Ls
+        run: ls -all
+
       - name: Access AI Owl
         run: java jar AI-Owl.jar
 
