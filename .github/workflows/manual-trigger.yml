@@ -29,7 +29,7 @@ jobs:
         run: cody help
 
       - name: Download AI Owl
-      - run:
+      - run: |
           curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl/aiowl-release-1.zip > aiowl.zip
           unzip aiowl.zip
 
