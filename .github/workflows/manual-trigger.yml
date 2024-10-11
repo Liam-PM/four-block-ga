@@ -8,5 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Print Hello World
-      run: echo "Hello, World!"
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Cody
+        run: npm install -g @sourcegraph/cody
+
+      - name: Print Cody Help
+        run: cody help
+
+      - name: Print Hello World
+        run: echo "Hello, World!"
