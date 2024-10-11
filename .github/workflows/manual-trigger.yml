@@ -28,12 +28,10 @@ jobs:
       - name: Print Cody Help
         run: cody help
 
-      - name: Setup Release Downloader
-        uses: robinraju/release-downloader@v1
-        with:
-          tag: 'aiowl'
-          extract: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download AI Owl
+      - run:
+          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl/aiowl-release-1.zip > aiowl.zip
+          unzip aiowl.zip
 
       - name: Ls
         run: ls -all
