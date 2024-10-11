@@ -19,5 +19,17 @@ jobs:
       - name: Print Cody Help
         run: cody help
 
+      - name: Setup Release Downloader
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: ${{ github.repository }}
+          latest: false
+          preRelease: false
+          tag: 'aiowl'
+          extract: true
+
+      - name: Access AI Owl
+        run: java jar AI-Owl.jar
+
       - name: Print Hello World
         run: echo "Hello, World!"
