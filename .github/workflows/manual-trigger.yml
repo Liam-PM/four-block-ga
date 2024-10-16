@@ -37,7 +37,7 @@ jobs:
         run: ls -all
 
       - name: Access AI Owl
-        run: java -jar ./AI-Owl.jar
+        run: java -jar ./AI-Owl.jar -t ${{ secrets.SOURCEGRAPH_CODY_TOKEN }}
 
       - name: Print Hello World
         run: echo "Hello, World!"
