@@ -30,11 +30,20 @@ jobs:
 
       - name: Download AI Owl
         run: |
-          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl/aiowl-release-1.zip > aiowl.zip
+          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl2/AI-Owl.zip > aiowl.zip
           unzip aiowl.zip
 
       - name: Ls
         run: ls -all
+
+      - name: AI Owl - list repository files
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" listrepositoryfiles
+
+      - name: AI Owl - list repository directories
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
+
+      - name: Access AI Owl
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
 
       - name: Access AI Owl
         run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
