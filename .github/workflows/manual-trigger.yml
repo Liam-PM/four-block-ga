@@ -40,7 +40,7 @@ jobs:
         run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" listrepositoryfiles
 
       - name: AI Owl - list repository directories
-        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" listrepositorydirectories
 
       - name: AI Owl - find git root
         run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" findgitroot
