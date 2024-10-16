@@ -37,7 +37,7 @@ jobs:
         run: ls -all
 
       - name: Access AI Owl
-        run: java -jar ./AI-Owl.jar -t ${{ secrets.SOURCEGRAPH_CODY_TOKEN }} -i ${{ vars.DEFAULT_INPUT_FILE }} -o ${{ vars.DEFAULT_OUTPUT_FILE }} -p ${{ vars.DEFAULT_PROMPTS_FILE }} -q ${{ vars.DEFAULT_QUERY }}
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}"
 
       - name: Print Hello World
         run: echo "Hello, World!"
