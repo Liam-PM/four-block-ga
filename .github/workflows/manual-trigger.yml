@@ -42,10 +42,10 @@ jobs:
       - name: AI Owl - list repository directories
         run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
 
-      - name: Access AI Owl
-        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
+      - name: AI Owl - find git root
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" findgitroot
 
-      - name: Access AI Owl
+      - name: AI Owl - document entire repository
         run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" generatedocumentationforentirerepository
 
       - name: Print Hello World
