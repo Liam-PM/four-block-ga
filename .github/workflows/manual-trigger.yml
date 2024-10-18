@@ -65,7 +65,7 @@ jobs:
 
       - name: Commit Changes
         run: |
-          git add .
+          git add *.cs *.md
           git commit -m "Documentation automatically genearted for entire repository (manual github action)"
 
       - name: Push Changes
