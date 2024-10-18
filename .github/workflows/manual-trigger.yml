@@ -30,7 +30,7 @@ jobs:
 
       - name: Download AI Owl
         run: |
-          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl10/AI-Owl.zip > aiowl.zip
+          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl11/AI-Owl.zip > aiowl.zip
           unzip aiowl.zip
 
       - name: Ls
