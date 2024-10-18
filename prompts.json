@@ -1,0 +1,16 @@
+{
+    "prompts": [
+        {
+            "id": "DOCSTRINGS",
+            "prompt": "Please add detailed and proper docstrings to the file located at `%inputCodeFileName%`, adhering strictly to the C# programming language docstring guidelines. Ensure that you: 1. Include a docstring for each class, interface, object, struct, and enum which provides a comprehensive summary of its purpose and usage. 2. For methods within these components that could potentially throw exceptions, add a specific docstring section describing the exceptions that can be thrown. 3. For longer methods, insert in-line comments to clarify the purpose and functionality of blocks of code within these methods. Return the modified file with these additions."
+        },
+        {
+            "id": "README_DICTIONARY",
+            "prompt": "Create a readme file for a folder called %inputDirectoryName% containing the files provided. Return only the markdown content."
+        },
+        {
+            "id": "README_FILE",
+            "prompt": "Create a readme file for the file %inputCodeFileName% in markdown format. Return only the markdown content. Include the following sections: Title, description, usage, installation, api reference, all dependencies including custom ones, configuration, examples, testing, contributing, troubleshooting, changelog, license, code review notes, security notes, architecture improvement notes, alternatives"
+        }
+    ]
+}
