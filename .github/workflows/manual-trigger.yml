@@ -6,6 +6,10 @@ on:
 jobs:
   say-hello:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -35,7 +39,7 @@ jobs:
 
       - name: Download AI Owl
         run: |
-          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl12/AI-Owl.zip > aiowl.zip
+          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl13/AI-Owl.zip > aiowl.zip
           unzip aiowl.zip
 
       - name: Ls
