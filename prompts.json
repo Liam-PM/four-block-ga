@@ -1,0 +1,16 @@
+{
+    "prompts": [
+        {
+            "id": "DOCSTRINGS",
+            "prompt": "Add proper docstrings to the following file `%inputCodeFileName%`, return only the modified file. Follow the docstring guidelines for the csharp programming language. Where the content of the function can throw an exception, add a docstring that describes the exception that can be thrown. In longer functions also add in-line comments to describe the purpose of the code. The summary on classes, interfaces, objects, structs and enums should be comprehensive."
+        },
+        {
+            "id": "README_DICTIONARY",
+            "prompt": "Create a readme file for a folder called %inputDirectoryName% containing the files provided. Return only the markdown content."
+        },
+        {
+            "id": "README_FILE",
+            "prompt": "Create a readme file for the file %inputCodeFileName% in markdown format. Return only the markdown content. Include the following sections: Title, description, usage, installation, api reference, all dependencies including custom ones, configuration, examples, testing, contributing, troubleshooting, changelog, license, code review notes, security notes, architecture improvement notes, alternatives"
+        }
+    ]
+}
