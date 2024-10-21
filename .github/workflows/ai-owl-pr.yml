@@ -49,11 +49,6 @@ jobs:
       - name: Ls
         run: ls -all
 
-      - name: List Modified Files
-        run: |
-          echo "Modified files in this pull request:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-
       - name: Setup changed-files
         id: changed-files
         uses: tj-actions/changed-files@v44
@@ -62,6 +57,9 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
+            if [[ "$file" == *.cs ]]; then
+              java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "$file" -o "$file" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" adddocstrings
+            fi
           done
 
       - name: Print max command line length
