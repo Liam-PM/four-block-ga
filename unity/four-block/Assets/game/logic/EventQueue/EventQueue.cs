@@ -9,6 +9,8 @@ namespace game.logic.EventQueue
         
         public int QueueSize(EventId id) => _queues.ContainsKey(id) ? _queues[id].Count : 0;
         
+        public bool IsEmpty() => _queues.Count == 0;
+        
         public EventQueue()
         {
             _queues = new Dictionary<EventId, Queue<IEvent>>();
