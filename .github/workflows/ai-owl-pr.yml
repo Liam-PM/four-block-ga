@@ -1,0 +1,65 @@
+name: AI Owl PR
+
+on:
+  pull_request:
+    branches:
+      - develop
+    types:
+      [opened, edited]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Install Cody
+        run: npm install -g @sourcegraph/cody
+
+      - name: Print Cody Help
+        run: cody help
+
+      - name: Download AI Owl
+        run: |
+          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/aiowl15/AI-Owl.zip > aiowl.zip
+          unzip aiowl.zip
+
+      - name: Ls
+        run: ls -all
+
+      - name: Print max command line length
+        run: getconf ARG_MAX
+
+      - name: AI Owl - list repository files
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" listrepositoryfiles
+
+      - name: AI Owl - list repository directories
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" listrepositorydirectories
+
+      - name: AI Owl - find git root
+        run: java -jar ./AI-Owl.jar -t "${{ secrets.SOURCEGRAPH_CODY_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -p "${{ vars.DEFAULT_PROMPTS_FILE }}" -q "${{ vars.DEFAULT_QUERY }}" findgitroot
+
+      - name: Print Hello World
+        run: echo "Hello, World!"
