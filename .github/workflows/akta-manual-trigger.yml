@@ -1,0 +1,54 @@
+name: Manual Trigger Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Install Cody
+        run: npm install -g @sourcegraph/cody
+
+      - name: Print Cody Help
+        run: cody help
+
+      - name: Download Akta
+        run: |
+          curl -L https://github.com/Liam-PM/four-block-ga/releases/download/akta1/Akta.jar > akta.jar
+
+      - name: Ls
+        run: ls -all
+
+      - name: Print max command line length
+        run: getconf ARG_MAX
+
+      - name: Akta - query
+        run: java -jar ./akta.jar -t "${{ secrets.AUTOKT_TOKEN }}" -i "${{ vars.DEFAULT_INPUT_FILE }}" -o "${{ vars.DEFAULT_OUTPUT_FILE }}" -r "${{ vars.DEFAULT_REPOSITORY }}" -q "${{ vars.DEFAULT_QUERY }}" -gi "${{ secrets.AUTOKT_INSTALLATION_ID }}" -gu "${{ secrets.AUTOKT_USER_TOKEN }}" -ga "${{ secrets.AUTOKT_ACCESS_TOKEN }}" -gr "${{ secrets.AUTOKT_REFRESH_TOKEN }}" query
+
+      - name: Print Hello World
+        run: echo "Hello, World!"
